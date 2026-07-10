@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+/* =========================================
+   PWS Premium Template - Global Styles
+   ========================================= */
+
+@theme {
+  /* Aqui no futuro podemos definir variáveis globais de marca para os clientes */
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply antialiased text-slate-800 bg-white;
+}
