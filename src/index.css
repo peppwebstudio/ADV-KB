@@ -1,17 +1,32 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-/* =========================================
-   PWS Premium Template - Global Styles
-   ========================================= */
-
-@theme {
-  /* Aqui no futuro podemos definir variáveis globais de marca para os clientes */
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 350 90% 10%;
+    --border: 0 0% 90%;
+    --radius: 0.5rem;
+    --font-heading: 'Playfair Display', serif; /* Exemplo, altere conforme o design */
+    --font-body: 'Inter', sans-serif;
+  }
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  @apply antialiased text-slate-800 bg-white;
+@layer utilities {
+  .bg-gold-gradient {
+    @apply bg-gradient-to-r from-[hsl(38_55%_45%)] via-[hsl(40_60%_75%)] to-[hsl(38_55%_52%)];
+  }
+  .text-gradient-gold {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-[hsl(38_55%_52%)] to-[hsl(40_60%_75%)];
+  }
+  .bg-burgundy-gradient {
+    @apply bg-gradient-to-b from-[hsl(350_92%_6%)] to-[hsl(350_90%_10%)];
+  }
+  .glass-nav {
+    @apply bg-[hsl(350_92%_6%/0.9)] backdrop-blur-md;
+  }
+  .tracking-luxe {
+    @apply tracking-[0.2em];
+  }
 }
