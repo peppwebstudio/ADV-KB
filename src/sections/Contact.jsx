@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { motion } from "framer-motion";
 import { Phone, Mail, MapPin, Clock, Send, CheckCircle2 } from "lucide-react";
+import emailjs from '@emailjs/browser';
 import { CLIENT_INFO, PRACTICE_AREAS } from "../utils/constants";
 
 const CONTACT_INFO = [
@@ -10,26 +11,45 @@ const CONTACT_INFO = [
   { icon: Clock, label: "Horário", value: CLIENT_INFO.hours },
 ];
 
-// Estilo unificado para inputs (Otimizado para Fundo Escuro)
 const inputClasses = "w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder-white/40 focus:border-[hsl(38_55%_58%)] focus:bg-white/10 focus:outline-none focus:ring-1 focus:ring-[hsl(38_55%_58%)] transition-all [&>option]:bg-[hsl(350_92%_5%)] [&>option]:text-white";
 
 export default function Contact() {
+  const form = useRef();
   const [sent, setSent] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-      setSent(true);
-    }, 800);
+    setError(false);
+
+    // Conectando com as variáveis de ambiente (Padrão de Agência)
+    emailjs
+      .sendForm(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        form.current,
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+      )
+      .then(
+        (result) => {
+          console.log("Sucesso:", result.text);
+          setLoading(false);
+          setSent(true);
+          form.current.reset(); // Limpa os campos magicamente
+        },
+        (error) => {
+          console.error("Erro no envio:", error.text);
+          setLoading(false);
+          setError(true);
+        }
+      );
   };
 
   return (
     <section id="contato" className="py-20 md:py-28 bg-[hsl(350_92%_5%)] relative overflow-hidden">
       
-      {/* Elemento de decoração de fundo sutil */}
       <div className="absolute top-0 right-0 -mr-32 -mt-32 h-96 w-96 rounded-full bg-[hsl(38_55%_58%)]/5 blur-[120px]" />
 
       <div className="mx-auto max-w-7xl px-5 md:px-8 relative z-10">
@@ -40,7 +60,6 @@ export default function Contact() {
             <span className="h-px w-10 bg-[hsl(38_55%_58%)]/50" />
           </p>
           <h2 className="mt-5 font-heading text-3xl md:text-4xl lg:text-5xl font-semibold text-white">
-            {/* CORREÇÃO AQUI: Substituímos o bg-clip-text falho pela cor sólida dourada */}
             Vamos conversar sobre o seu <span className="text-[hsl(38_55%_58%)] italic">caso</span>
           </h2>
           <p className="mt-5 text-base md:text-lg text-white/70 leading-relaxed">
@@ -116,52 +135,59 @@ export default function Contact() {
                 </button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-5">
+              <form ref={form} onSubmit={handleSubmit} className="space-y-5">
                 <div className="grid sm:grid-cols-2 gap-5">
                   <Field label="Nome Completo" required>
-                    <input type="text" required className={inputClasses} placeholder="Seu nome completo" />
+                    <input type="text" name="user_name" required className={inputClasses} placeholder="Seu nome completo" />
                   </Field>
                   <Field label="E-mail" required>
-                    <input type="email" required className={inputClasses} placeholder="seu@email.com" />
+                    <input type="email" name="user_email" required className={inputClasses} placeholder="seu@email.com" />
                   </Field>
                 </div>
 
                 <div className="grid sm:grid-cols-2 gap-5">
                   <Field label="Telefone" required>
-                    <input type="tel" required className={inputClasses} placeholder="(11) 90000-0000" />
+                    <input type="tel" name="user_phone" required className={inputClasses} placeholder="(11) 90000-0000" />
                   </Field>
                   <Field label="Forma de Contato Preferida" required>
-                    <select required className={inputClasses} defaultValue="">
+                    <select name="contact_pref" required className={inputClasses} defaultValue="">
                       <option value="" disabled className="text-white/40">Selecione...</option>
-                      <option>WhatsApp</option>
-                      <option>Telefone</option>
-                      <option>E-mail</option>
+                      <option value="WhatsApp">WhatsApp</option>
+                      <option value="Telefone">Telefone</option>
+                      <option value="E-mail">E-mail</option>
                     </select>
                   </Field>
                 </div>
 
                 <Field label="Área Jurídica" required>
-                  <select required className={inputClasses} defaultValue="">
+                  <select name="legal_area" required className={inputClasses} defaultValue="">
                     <option value="" disabled className="text-white/40">Selecione a área...</option>
                     {PRACTICE_AREAS.map((a) => (
-                      <option key={a.title}>{a.title}</option>
+                      <option key={a.title} value={a.title}>{a.title}</option>
                     ))}
-                    <option>Outra / Não sei informar</option>
+                    <option value="Outra / Não sei informar">Outra / Não sei informar</option>
                   </select>
                 </Field>
 
                 <Field label="Assunto" required>
-                  <input type="text" required className={inputClasses} placeholder="Resumo do assunto" />
+                  <input type="text" name="subject" required className={inputClasses} placeholder="Resumo do assunto" />
                 </Field>
 
                 <Field label="Mensagem" required>
                   <textarea
+                    name="message"
                     required
                     rows={4}
                     className={`${inputClasses} resize-none`}
                     placeholder="Descreva brevemente seu assunto jurídico, sua principal preocupação ou como podemos ajudá-lo(a)."
                   />
                 </Field>
+
+                {error && (
+                  <p className="text-red-400 text-sm text-center">
+                    Ocorreu um erro ao enviar. Por favor, tente novamente mais tarde.
+                  </p>
+                )}
 
                 <button
                   type="submit"
