@@ -10,8 +10,8 @@ const CONTACT_INFO = [
   { icon: Clock, label: "Horário", value: CLIENT_INFO.hours },
 ];
 
-// Estilo unificado para inputs do formulário
-const inputClasses = "w-full rounded-xl border border-border bg-white px-4 py-3 text-sm text-foreground placeholder-muted-foreground/60 focus:border-[hsl(38_55%_58%)] focus:outline-none focus:ring-1 focus:ring-[hsl(38_55%_58%)] transition-colors";
+// Estilo unificado para inputs (Otimizado para Fundo Escuro)
+const inputClasses = "w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder-white/40 focus:border-[hsl(38_55%_58%)] focus:bg-white/10 focus:outline-none focus:ring-1 focus:ring-[hsl(38_55%_58%)] transition-all [&>option]:bg-[hsl(350_92%_5%)] [&>option]:text-white";
 
 export default function Contact() {
   const [sent, setSent] = useState(false);
@@ -27,18 +27,23 @@ export default function Contact() {
   };
 
   return (
-    <section id="contato" className="py-20 md:py-28 bg-[hsl(40_33%_97%)] relative overflow-hidden">
-      <div className="mx-auto max-w-7xl px-5 md:px-8">
+    <section id="contato" className="py-20 md:py-28 bg-[hsl(350_92%_5%)] relative overflow-hidden">
+      
+      {/* Elemento de decoração de fundo sutil */}
+      <div className="absolute top-0 right-0 -mr-32 -mt-32 h-96 w-96 rounded-full bg-[hsl(38_55%_58%)]/5 blur-[120px]" />
+
+      <div className="mx-auto max-w-7xl px-5 md:px-8 relative z-10">
         <div className="text-center max-w-2xl mx-auto">
-          <p className="flex items-center justify-center gap-3 text-xs tracking-luxe uppercase text-[hsl(38_55%_45%)] font-medium">
-            <span className="h-px w-10 bg-[hsl(38_55%_58%)]" />
+          <p className="flex items-center justify-center gap-3 text-xs tracking-luxe uppercase text-[hsl(38_55%_58%)] font-medium">
+            <span className="h-px w-10 bg-[hsl(38_55%_58%)]/50" />
             Contato
-            <span className="h-px w-10 bg-[hsl(38_55%_58%)]" />
+            <span className="h-px w-10 bg-[hsl(38_55%_58%)]/50" />
           </p>
-          <h2 className="mt-5 font-heading text-3xl md:text-4xl lg:text-5xl font-semibold text-foreground">
-            Vamos conversar sobre o seu <span className="text-gradient-gold italic">caso</span>
+          <h2 className="mt-5 font-heading text-3xl md:text-4xl lg:text-5xl font-semibold text-white">
+            {/* CORREÇÃO AQUI: Substituímos o bg-clip-text falho pela cor sólida dourada */}
+            Vamos conversar sobre o seu <span className="text-[hsl(38_55%_58%)] italic">caso</span>
           </h2>
-          <p className="mt-5 text-base md:text-lg text-muted-foreground leading-relaxed">
+          <p className="mt-5 text-base md:text-lg text-white/70 leading-relaxed">
             O primeiro passo é uma conversa reservada. Preencha o formulário e entraremos em contato.
           </p>
         </div>
@@ -56,28 +61,30 @@ export default function Contact() {
               {CONTACT_INFO.map((c) => {
                 const Icon = c.icon;
                 const content = (
-                  <div className="rounded-2xl bg-white border border-border p-5 hover:border-[hsl(38_55%_58%/0.5)] hover:shadow-lg transition-all h-full">
-                    <div className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-[hsl(38_55%_52%/0.12)]">
-                      <Icon className="h-5 w-5 text-[hsl(38_55%_45%)]" />
+                  <div className="group rounded-2xl bg-white/5 border border-white/10 p-5 hover:border-[hsl(38_55%_58%)]/40 hover:bg-white/10 hover:shadow-lg transition-all h-full">
+                    <div className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-[hsl(38_55%_58%)]/10 group-hover:bg-[hsl(38_55%_58%)]/20 transition-colors">
+                      <Icon className="h-5 w-5 text-[hsl(38_55%_58%)]" />
                     </div>
-                    <p className="mt-3 text-xs tracking-luxe uppercase text-muted-foreground">{c.label}</p>
-                    <p className="mt-1 text-sm font-medium text-foreground leading-snug">{c.value}</p>
+                    <p className="mt-3 text-xs tracking-luxe uppercase text-white/60">{c.label}</p>
+                    <p className="mt-1 text-sm font-medium text-white leading-snug">{c.value}</p>
                   </div>
                 );
                 return c.href ? (
-                  <a key={c.label} href={c.href} target="_blank" rel="noopener noreferrer" className="block">{content}</a>
+                  <a key={c.label} href={c.href} target="_blank" rel="noopener noreferrer" className="block h-full">
+                    {content}
+                  </a>
                 ) : (
-                  <div key={c.label}>{content}</div>
+                  <div key={c.label} className="h-full">{content}</div>
                 );
               })}
             </div>
 
             {/* Map */}
-            <div className="relative rounded-2xl overflow-hidden border border-border min-h-[220px] flex-1 bg-[hsl(350_92%_8%)]">
+            <div className="relative rounded-2xl overflow-hidden border border-white/10 min-h-[220px] flex-1 bg-[hsl(350_92%_8%)] mt-2">
               <iframe
                 title="Localização do escritório"
                 src={CLIENT_INFO.mapEmbedUrl}
-                className="absolute inset-0 h-full w-full grayscale-[0.3] contrast-[1.1]"
+                className="absolute inset-0 h-full w-full grayscale-[0.4] opacity-80 hover:opacity-100 hover:grayscale-0 transition-all duration-500"
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
               />
@@ -90,20 +97,20 @@ export default function Contact() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="rounded-3xl bg-white border border-border shadow-xl p-6 md:p-9"
+            className="rounded-3xl bg-white/5 backdrop-blur-md border border-[hsl(38_55%_58%)]/30 shadow-2xl p-6 md:p-9"
           >
             {sent ? (
               <div className="h-full flex flex-col items-center justify-center text-center py-16">
                 <div className="inline-flex h-16 w-16 items-center justify-center rounded-full bg-gold-gradient">
                   <CheckCircle2 className="h-8 w-8 text-[hsl(350_90%_10%)]" />
                 </div>
-                <h3 className="mt-5 font-heading text-2xl font-semibold text-foreground">Mensagem enviada!</h3>
-                <p className="mt-2 text-muted-foreground max-w-sm">
+                <h3 className="mt-5 font-heading text-2xl font-semibold text-white">Mensagem enviada!</h3>
+                <p className="mt-2 text-white/70 max-w-sm">
                   Agradecemos seu contato. Retornaremos em breve de forma sigilosa e profissional.
                 </p>
                 <button
                   onClick={() => setSent(false)}
-                  className="mt-6 text-sm font-semibold text-[hsl(38_55%_45%)] hover:underline focus:outline-none"
+                  className="mt-8 text-sm font-semibold text-[hsl(38_55%_58%)] hover:text-white hover:underline transition-colors focus:outline-none"
                 >
                   Enviar nova mensagem
                 </button>
@@ -125,7 +132,7 @@ export default function Contact() {
                   </Field>
                   <Field label="Forma de Contato Preferida" required>
                     <select required className={inputClasses} defaultValue="">
-                      <option value="" disabled>Selecione...</option>
+                      <option value="" disabled className="text-white/40">Selecione...</option>
                       <option>WhatsApp</option>
                       <option>Telefone</option>
                       <option>E-mail</option>
@@ -135,7 +142,7 @@ export default function Contact() {
 
                 <Field label="Área Jurídica" required>
                   <select required className={inputClasses} defaultValue="">
-                    <option value="" disabled>Selecione a área...</option>
+                    <option value="" disabled className="text-white/40">Selecione a área...</option>
                     {PRACTICE_AREAS.map((a) => (
                       <option key={a.title}>{a.title}</option>
                     ))}
@@ -150,7 +157,7 @@ export default function Contact() {
                 <Field label="Mensagem" required>
                   <textarea
                     required
-                    rows={5}
+                    rows={4}
                     className={`${inputClasses} resize-none`}
                     placeholder="Descreva brevemente seu assunto jurídico, sua principal preocupação ou como podemos ajudá-lo(a)."
                   />
@@ -159,12 +166,12 @@ export default function Contact() {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full inline-flex items-center justify-center gap-2 rounded-full bg-gold-gradient px-8 py-4 text-sm md:text-base font-semibold text-[hsl(350_90%_10%)] shadow-lg shadow-[hsl(38_55%_52%/0.25)] hover:shadow-xl hover:scale-[1.01] transition-all disabled:opacity-70 disabled:cursor-not-allowed"
+                  className="w-full mt-2 inline-flex items-center justify-center gap-2 rounded-full bg-gold-gradient px-8 py-4 text-sm md:text-base font-bold text-[hsl(350_90%_10%)] shadow-lg shadow-[hsl(38_55%_52%/0.15)] hover:shadow-[hsl(38_55%_52%/0.3)] hover:scale-[1.01] transition-all disabled:opacity-70 disabled:cursor-not-allowed uppercase tracking-wide"
                 >
                   {loading ? "Enviando..." : "Enviar Mensagem"}
                   {!loading && <Send className="h-4 w-4" />}
                 </button>
-                <p className="text-center text-xs text-muted-foreground">
+                <p className="text-center text-xs text-white/50 mt-4">
                   Suas informações são tratadas com absoluto sigilo profissional.
                 </p>
               </form>
@@ -179,8 +186,8 @@ export default function Contact() {
 function Field({ label, required, children }) {
   return (
     <label className="block">
-      <span className="block text-xs font-semibold tracking-wide uppercase text-foreground/70 mb-2">
-        {label} {required && <span className="text-[hsl(38_55%_45%)]">*</span>}
+      <span className="block text-[11px] font-semibold tracking-widest uppercase text-white/80 mb-2">
+        {label} {required && <span className="text-[hsl(38_55%_58%)]">*</span>}
       </span>
       {children}
     </label>
