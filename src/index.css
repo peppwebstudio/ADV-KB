@@ -1,32 +1,60 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* ==========================================================================
+   PWS PREMIUM TEMPLATE - SINGLE SOURCE OF TRUTH (CSS)
+   Cliente: Kataliny Bonfim Advocacia
+   Agência: Pepp Web Studio (PWS)
+   ========================================================================== */
 
-@layer base {
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 350 90% 10%;
-    --border: 0 0% 90%;
-    --radius: 0.5rem;
-    --font-heading: 'Playfair Display', serif; /* Exemplo, altere conforme o design */
-    --font-body: 'Inter', sans-serif;
-  }
+/* No Tailwind v4, toda a biblioteca é importada de forma limpa no topo */
+@import "tailwindcss";
+
+@theme {
+  /* Cores Globais da Identidade Visual */
+  --color-background: hsl(350, 92%, 5%); /* Vinho ultra-escuro de fundo */
+  --color-foreground: hsl(40, 33%, 97%); /* Creme/Off-white para textos */
+  --color-card: hsl(350, 80%, 10%);      /* Vinho intermediário para cards */
+  --color-border: rgba(198, 163, 108, 0.2); /* Borda dourada sutil */
+  
+  /* Paleta Dourada Premium (Golds) */
+  --color-gold-light: hsl(40, 65%, 72%);
+  --color-gold: hsl(38, 55%, 58%);
+  --color-gold-dark: hsl(38, 55%, 45%);
+
+  /* Gradientes de Retaguarda mapeados no tema */
+  --background-gold-gradient-theme: linear-gradient(135deg, hsl(40, 65%, 72%) 0%, hsl(38, 55%, 58%) 50%, hsl(38, 55%, 45%) 100%);
+  --background-burgundy-gradient: linear-gradient(180deg, hsl(350, 92%, 12%) 0%, hsl(350, 92%, 5%) 100%);
 }
 
-@layer utilities {
-  .bg-gold-gradient {
-    @apply bg-gradient-to-r from-[hsl(38_55%_45%)] via-[hsl(40_60%_75%)] to-[hsl(38_55%_52%)];
-  }
-  .text-gradient-gold {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-[hsl(38_55%_52%)] to-[hsl(40_60%_75%)];
-  }
-  .bg-burgundy-gradient {
-    @apply bg-gradient-to-b from-[hsl(350_92%_6%)] to-[hsl(350_90%_10%)];
-  }
-  .glass-nav {
-    @apply bg-[hsl(350_92%_6%/0.9)] backdrop-blur-md;
-  }
-  .tracking-luxe {
-    @apply tracking-[0.2em];
-  }
+/* ==========================================================================
+   CLASSES UTILITÁRIAS PERSONALIZADAS (BULLETPROOF)
+   ========================================================================== */
+
+/* 💎 Gradiente Dourado Premium (PWS Core)
+   Injetado diretamente para garantir que o compilador do Vite no Windows/Linux
+   renderize o botão com contraste perfeito em qualquer navegador sem falhas de cache. */
+.bg-gold-gradient {
+  background: linear-gradient(135deg, hsl(40, 65%, 72%) 0%, hsl(38, 55%, 58%) 50%, hsl(38, 55%, 45%) 100%) !important;
+}
+
+/* Efeito de Texto Dourado Metalizado com degradê de alta costura */
+.text-gradient-gold {
+  background: linear-gradient(135deg, #e4c89a 0%, #c6a36c 50%, #9e7f4f 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+/* ==========================================================================
+   DIRETIVAS @UTILITY COMPATÍVEIS COM TAILWIND V4
+   ========================================================================== */
+
+/* Efeito fosco de vidro escuro para backgrounds sofisticados */
+@utility glass-dark {
+  background-color: rgba(15, 2, 4, 0.4);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Borda dourada translúcida e suave para grids e cards */
+@utility gilded-border {
+  border: 1px solid rgba(198, 163, 108, 0.2);
 }

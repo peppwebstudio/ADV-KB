@@ -1,70 +1,115 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { CheckCircle2 } from "lucide-react";
-import { CLIENT_INFO, ABOUT_INFO, ABOUT_VALUES } from "../utils/constants";
+import { ShieldCheck, Award, Scale } from "lucide-react";
+import { ABOUT_IMG } from "../utils/constants";
 
 export default function About() {
+  const credentials = [
+    {
+      icon: Scale,
+      title: "Atuação Estratégica",
+      description: "Soluções jurídicas personalizadas focadas no resultado prático.",
+    },
+    {
+      icon: ShieldCheck,
+      title: "Sigilo e Rigor",
+      description: "Ética inabalável e confidencialidade absoluta em cada processo.",
+    },
+    {
+      icon: Award,
+      title: "Excelência Técnica",
+      description: "Atualização jurídica constante para antecipar cenários complexos.",
+    },
+  ];
+
   return (
-    <section id="sobre" className="py-20 md:py-28 bg-background relative overflow-hidden">
-      <div className="mx-auto max-w-7xl px-5 md:px-8">
-        <div className="grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
+    <section id="sobre" className="py-20 md:py-28 bg-[hsl(350_92%_5%)] relative overflow-hidden">
+      {/* Luz dourada difusa de fundo */}
+      <div className="absolute top-1/4 -left-32 h-96 w-96 rounded-full bg-[hsl(38_55%_52%)] opacity-5 blur-3xl" />
+
+      <div className="relative mx-auto max-w-7xl px-5 md:px-8">
+        <div className="grid md:grid-cols-12 gap-12 lg:gap-20 items-center">
           
-          {/* Portrait */}
+          {/* COLUNA ESQUERDA: FOTO INSTITUCIONAL */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.8 }}
-            className="relative"
+            transition={{ duration: 0.6 }}
+            className="md:col-span-5 relative"
           >
-            <div className="absolute -inset-3 rounded-[2rem] bg-gold-gradient opacity-20 blur-2xl" />
-            <div className="relative rounded-[1.75rem] overflow-hidden border border-[hsl(38_55%_58%/0.3)] shadow-2xl">
-              <img src={ABOUT_INFO.portraitImg} alt={`Foto de ${CLIENT_INFO.name}`} className="w-full h-auto object-cover" />
-              <div className="absolute inset-0 bg-gradient-to-t from-[hsl(350_92%_8%/0.5)] to-transparent" />
-            </div>
-            <div className="absolute -bottom-6 -right-4 md:-right-6 bg-[hsl(350_92%_6%/0.9)] backdrop-blur-md border border-[hsl(38_55%_58%/0.3)] rounded-2xl px-6 py-4 text-center shadow-xl">
-              <p className="font-heading text-3xl font-semibold text-gradient-gold">{ABOUT_INFO.experienceYears}</p>
-              <p className="text-xs tracking-luxe uppercase text-white/80">Anos de Experiência</p>
+            {/* Moldura elegante deslocada decorativa */}
+            <div className="absolute inset-0 border border-[hsl(38_55%_58%/0.3)] rounded-2xl translate-x-4 translate-y-4 pointer-events-none hidden sm:block" />
+            
+            {/* Container da Imagem principal */}
+            <div className="relative rounded-2xl overflow-hidden aspect-[3/4] bg-neutral-900 border border-white/10 shadow-2xl">
+              <img
+                src={ABOUT_IMG}
+                alt="Dra. Kataliny Bonfim"
+                className="h-full w-full object-cover object-top hover:scale-105 transition-transform duration-700"
+                loading="lazy"
+                onError={(e) => {
+                  // Fallback visual caso a foto não seja encontrada localmente
+                  e.target.src = "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=800";
+                }}
+              />
+              {/* Degradê escuro de fusão no rodapé da imagem */}
+              <div className="absolute inset-0 bg-gradient-to-t from-[hsl(350_92%_5%)]/90 via-transparent to-transparent pointer-events-none" />
             </div>
           </motion.div>
 
-          {/* Text */}
+          {/* COLUNA DIREITA: TEXTOS E DIFERENCIAIS */}
           <motion.div
             initial={{ opacity: 0, x: 40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.8, delay: 0.1 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="md:col-span-7 flex flex-col"
           >
-            <p className="flex items-center gap-3 text-xs tracking-luxe uppercase text-[hsl(38_55%_45%)] font-medium">
-              <span className="h-px w-10 bg-[hsl(38_55%_58%)]" />
-              Sobre a Advogada
+            {/* Subtítulo */}
+            <p className="flex items-center gap-3 text-xs tracking-luxe uppercase text-[hsl(40_60%_75%)] font-medium">
+              <span className="h-px w-8 bg-[hsl(38_55%_58%)]" />
+              Quem Somos
             </p>
-            <h2 className="mt-5 font-heading text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight text-foreground">
-              {CLIENT_INFO.name}
+
+            {/* Título */}
+            <h2 className="mt-4 font-heading text-3xl md:text-4xl lg:text-5xl font-semibold text-white leading-tight">
+              Excelência, Ética e <br />
+              <span className="text-gradient-gold italic">Defesa Inabalável</span>
             </h2>
-            <p className="mt-3 font-heading italic text-lg text-[hsl(350_88%_30%)]">{ABOUT_INFO.oab}</p>
 
-            <p className="mt-6 text-base md:text-lg text-foreground/70 leading-relaxed">
-              {ABOUT_INFO.description}
+            {/* Descrição Principal */}
+            <p className="mt-6 text-white/80 text-sm md:text-base leading-relaxed">
+              Sob a liderança da Dra. Kataliny Bonfim, nosso escritório atua de forma altamente personalizada, entendendo que cada demanda exige uma estratégia única. Unimos profundo conhecimento técnico a uma visão analítica moderna para oferecer soluções seguras no âmbito preventivo e contencioso.
             </p>
 
-            <div className="mt-8 grid sm:grid-cols-2 gap-3">
-              {ABOUT_VALUES.map((v) => (
-                <div key={v} className="flex items-center gap-3">
-                  <CheckCircle2 className="h-5 w-5 flex-shrink-0 text-[hsl(38_55%_48%)]" />
-                  <span className="text-sm font-medium text-foreground/90">{v}</span>
-                </div>
-              ))}
-            </div>
+            <p className="mt-4 text-white/60 text-xs md:text-sm leading-relaxed">
+              Acreditamos que a advocacia de excelência é construída com proximidade, transparência e agilidade. Por isso, oferecemos aos nossos clientes um atendimento exclusivo, com acompanhamento em tempo real e foco absoluto na segurança de seus patrimônios e direitos.
+            </p>
 
-            <div className="mt-8 rounded-2xl bg-[hsl(350_92%_10%)] p-6 text-white relative overflow-hidden shadow-lg">
-              <div className="absolute top-0 right-0 h-24 w-24 rounded-full bg-gold-gradient opacity-15 blur-2xl" />
-              <p className="text-xs tracking-luxe uppercase text-[hsl(40_60%_75%)] mb-2">Nossa Missão</p>
-              <p className="font-heading text-lg md:text-xl leading-snug">
-                {ABOUT_INFO.mission}
-              </p>
+            {/* Lista de Diferenciais Estilizados */}
+            <div className="mt-10 space-y-6">
+              {credentials.map((cred, idx) => {
+                const Icon = cred.icon;
+                return (
+                  <div key={idx} className="flex gap-4 items-start">
+                    <div className="h-10 w-10 shrink-0 rounded-xl bg-white/5 border border-[hsl(38_55%_58%/0.2)] flex items-center justify-center text-[hsl(40_60%_75%)]">
+                      <Icon className="h-5 w-5" />
+                    </div>
+                    <div>
+                      <h4 className="font-heading font-semibold text-white text-sm md:text-base">
+                        {cred.title}
+                      </h4>
+                      <p className="text-xs md:text-sm text-white/50 mt-1 leading-normal">
+                        {cred.description}
+                      </p>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           </motion.div>
+
         </div>
       </div>
     </section>

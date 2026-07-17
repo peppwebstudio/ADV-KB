@@ -1,4 +1,5 @@
-import { Instagram, Linkedin, Facebook } from "lucide-react";
+
+/*angelo.hbonfim@upe.br senha #A1g2l3#  (L minúsculo)*/
 
 export const CLIENT_INFO = {
   name: "Kataliny Bonfim",
@@ -27,9 +28,9 @@ export const NAV_LINKS = [
 ];
 
 export const SOCIAL_LINKS = [
-  { icon: Instagram, href: CLIENT_INFO.social.instagram, label: "Instagram" },
-  { icon: Linkedin, href: CLIENT_INFO.social.linkedin, label: "LinkedIn" },
-  { icon: Facebook, href: CLIENT_INFO.social.facebook, label: "Facebook" },
+  { platform: "facebook", href: "https://facebook.com/suapagina" },
+  { platform: "instagram", href: "https://instagram.com/suapagina" },
+  { platform: "linkedin", href: "https://linkedin.com/suapagina" }
 ];
 
 export const HERO_STATS = [
@@ -136,3 +137,8 @@ export const CTA_INFO = {
   bgImage: "/cta-bg.jpg", // Lembre-se de colocar um fundo sofisticado na pasta public/
   logoUrl: "/logo-gold.png", // Marca d'água opcional do logotipo
 };
+
+// No seu src/utils/constants.js
+export const LOGO_URL = "/logo-gold.png";
+// No seu src/utils/constants.js
+export const ABOUT_IMG = "/advogada.jpg";

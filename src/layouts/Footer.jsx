@@ -1,80 +1,82 @@
-import { Phone, Mail, MapPin } from "lucide-react";
-import { CLIENT_INFO, NAV_LINKS, SOCIAL_LINKS } from "../utils/constants";
+import React from "react";
+import { Shield } from "lucide-react"; // Apenas o escudo (que é neutro) vem do Lucide
+import { Facebook, Instagram, Linkedin } from "../components/BrandIcons"; // Importando nossos ícones customizados
+import { SOCIAL_LINKS, FIRM_INFO } from "../utils/constants";
+
+// Mapeador de componentes locais para manter as constantes dinâmicas
+const iconMap = {
+  facebook: Facebook,
+  instagram: Instagram,
+  linkedin: Linkedin,
+};
 
 export default function Footer() {
-  return (
-    <footer className="bg-[hsl(350_92%_6%)] text-white relative overflow-hidden">
-      <div className="absolute -top-32 left-1/2 -translate-x-1/2 h-64 w-[60%] rounded-full bg-[hsl(38_55%_52%)] opacity-8 blur-3xl" />
+  const currentYear = new Date().getFullYear();
 
-      <div className="relative mx-auto max-w-7xl px-5 md:px-8 py-16 md:py-20">
-        <div className="grid gap-12 md:grid-cols-[1.2fr_1fr_1fr]">
-          {/* Brand */}
-          <div>
-            <img src={CLIENT_INFO.logoUrl} alt={CLIENT_INFO.name} className="h-16 w-auto rounded-full" />
-            <p className="mt-5 text-sm text-white/60 leading-relaxed max-w-sm">
-              Advocacia e Consultoria Jurídica com excelência técnica, ética e
-              atendimento verdadeiramente personalizado.
-            </p>
-            <div className="mt-6 flex gap-3">
-              {SOCIAL_LINKS.map((s) => (
+  return (
+    <footer className="bg-[hsl(350_92%_5%)] border-t border-white/10 pt-16 pb-8 text-white/60 text-sm">
+      <div className="mx-auto max-w-7xl px-5 md:px-8 grid md:grid-cols-3 gap-10 md:gap-6 pb-12 border-b border-white/10">
+        
+        {/* Lado Esquerdo: Marca */}
+        <div>
+          <span className="font-heading text-xl font-bold tracking-luxe text-white">
+            KATALINY BONFIM
+          </span>
+          <p className="mt-4 text-xs uppercase tracking-widest text-[hsl(40_60%_75%)]">
+            Advocacia & Consultoria Jurídica
+          </p>
+          <p className="mt-3 text-white/50 leading-relaxed max-w-sm">
+            Defesa estratégica e personalizada com foco na excelência e no sigilo profissional.
+          </p>
+        </div>
+
+        {/* Centro: Contatos */}
+        <div>
+          <h4 className="font-heading font-semibold text-white mb-4">Escritório</h4>
+          <ul className="space-y-3">
+            <li>{FIRM_INFO.address}</li>
+            <li>{FIRM_INFO.hours}</li>
+            <li>
+              <a href={`mailto:${FIRM_INFO.email}`} className="hover:text-white transition-colors">
+                {FIRM_INFO.email}
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        {/* Lado Direito: Redes Sociais */}
+        <div>
+          <h4 className="font-heading font-semibold text-white mb-4">Siga-nos</h4>
+          <div className="flex gap-4">
+            {SOCIAL_LINKS.map((social) => {
+              const IconComponent = iconMap[social.platform];
+              if (!IconComponent) return null;
+              
+              return (
                 <a
-                  key={s.label}
-                  href={s.href}
-                  aria-label={s.label}
+                  key={social.platform}
+                  href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-white/70 hover:border-[hsl(38_55%_58%)] hover:text-[hsl(40_60%_75%)] transition-colors"
+                  className="h-10 w-10 flex items-center justify-center rounded-full bg-white/5 border border-white/10 hover:bg-gold-gradient hover:text-[hsl(350_90%_10%)] hover:border-transparent transition-all"
+                  aria-label={`Acessar ${social.platform}`}
                 >
-                  <s.icon className="h-4 w-4" />
+                  <IconComponent className="h-5 w-5" />
                 </a>
-              ))}
-            </div>
-          </div>
-
-          {/* Nav */}
-          <div>
-            <p className="text-xs tracking-luxe uppercase text-[hsl(40_60%_75%)] font-medium">Navegação</p>
-            <ul className="mt-5 space-y-3">
-              {NAV_LINKS.map((n) => (
-                <li key={n.href}>
-                  <a href={n.href} className="text-sm text-white/60 hover:text-[hsl(40_60%_75%)] transition-colors">
-                    {n.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Contact */}
-          <div>
-            <p className="text-xs tracking-luxe uppercase text-[hsl(40_60%_75%)] font-medium">Contato</p>
-            <ul className="mt-5 space-y-4 text-sm text-white/60">
-              <li className="flex items-start gap-3">
-                <Phone className="h-4 w-4 mt-0.5 flex-shrink-0 text-[hsl(38_55%_52%)]" />
-                <a href={CLIENT_INFO.phoneHref} className="hover:text-[hsl(40_60%_75%)] transition-colors">{CLIENT_INFO.phone}</a>
-              </li>
-              <li className="flex items-start gap-3">
-                <Mail className="h-4 w-4 mt-0.5 flex-shrink-0 text-[hsl(38_55%_52%)]" />
-                <a href={`mailto:${CLIENT_INFO.email}`} className="hover:text-[hsl(40_60%_75%)] transition-colors break-all">{CLIENT_INFO.email}</a>
-              </li>
-              <li className="flex items-start gap-3">
-                <MapPin className="h-4 w-4 mt-0.5 flex-shrink-0 text-[hsl(38_55%_52%)]" />
-                <span>{CLIENT_INFO.address}</span>
-              </li>
-            </ul>
+              );
+            })}
           </div>
         </div>
 
-        <div className="mt-14 pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-white/50">© {new Date().getFullYear()} {CLIENT_INFO.name}. Todos os direitos reservados.</p>
-          <div className="flex gap-6 text-xs text-white/50">
-            <a href="#" className="hover:text-[hsl(40_60%_75%)] transition-colors">Política de Privacidade</a>
-            <a href="#" className="hover:text-[hsl(40_60%_75%)] transition-colors">Termos de Serviço</a>
-          </div>
+      </div>
+
+      {/* Copyright */}
+      <div className="mx-auto max-w-7xl px-5 md:px-8 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-white/40">
+        <p>© {currentYear} Kataliny Bonfim Advocacia. Todos os direitos reservados.</p>
+        <div className="flex items-center gap-2">
+          <Shield className="h-4 w-4 text-[hsl(40_60%_75%)]" />
+          <span>Desenvolvido com excelência por Pepp Web Studio</span>
         </div>
-        <p className="mt-6 text-center text-[10px] text-white/30">
-          OAB/SP 000.000 — Conforme Provimento do Conselho Federal da OAB, este site tem caráter meramente informativo.
-        </p>
       </div>
     </footer>
   );
