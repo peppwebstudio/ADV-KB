@@ -1,37 +1,29 @@
-
-/*angelo.hbonfim@upe.br senha #A1g2l3#  (L minúsculo)*/
+/* ==========================================================================
+   PWS PREMIUM TEMPLATE - GLOBAL CONSTANTS
+   Cliente: Kataliny Bonfim Advocacia
+   ========================================================================== */
 
 export const CLIENT_INFO = {
   name: "Kataliny Bonfim",
-  // Coloque as imagens na pasta public do Vite
-  logoUrl: "/logo.png", 
-  heroImg: "/hero-bg.jpg",
-  phone: "(00) 00000-0000",
-  phoneHref: "tel:+550000000000",
+  tagline: "Advocacia e Consultoria Jurídica",
+  phone: "+55 (11) 4000-0000",
+  phoneHref: "tel:+551140000000",
   email: "contato@katalinybonfim.com.br",
-  address: "Av. Exemplo, 1000 - Centro, Cidade - UF",
+  address: "Av. Paulista, 1000 — Bela Vista, São Paulo — SP, 01310-100",
+  mapEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.106696296001!2d-46.65496112369251!3d-23.564611161688665!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59c8da0aa315%3A0xd59f9431f2c9776a!2sAv.%20Paulista%2C%201000%20-%20Bela%20Vista%2C%20S%C3%A3o%20Paulo%20-%20SP%2C%2001310-100!5e0!3m2!1spt-BR!2sbr!4v1715000000000!5m2!1spt-BR!2sbr",
+  hours: "Seg. a Sex. — 09h às 18h",
   social: {
-    instagram: "https://instagram.com",
-    linkedin: "https://linkedin.com",
-    facebook: "https://facebook.com",
+    instagram: "#",
+    linkedin: "#",
+    facebook: "#",
   },
+  
+  // Imagens Locais (Pasta public/) - Prontas para Vercel
+  logoUrl: "/logo-gold.png",
+  heroImg: "/biblioteca.png",
+  portraitImg: "/advogada.png",
+  ctaImg: "/parede.png",
 };
-
-export const NAV_LINKS = [
-  { label: "Sobre", href: "#sobre" },
-  { label: "Áreas de Atuação", href: "#areas" },
-  { label: "Diferenciais", href: "#diferenciais" },
-  { label: "Processo", href: "#processo" },
-  { label: "Depoimentos", href: "#depoimentos" },
-  { label: "FAQ", href: "#faq" },
-  { label: "Contato", href: "#contato" },
-];
-
-export const SOCIAL_LINKS = [
-  { platform: "facebook", href: "https://facebook.com/suapagina" },
-  { platform: "instagram", href: "https://instagram.com/suapagina" },
-  { platform: "linkedin", href: "https://linkedin.com/suapagina" }
-];
 
 export const HERO_STATS = [
   { n: "10+", l: "Anos de Atuação" },
@@ -39,106 +31,44 @@ export const HERO_STATS = [
   { n: "9", l: "Áreas de Prática" },
 ];
 
-// Adicione junto aos exports já existentes no seu constants.js
-
-export const ABOUT_INFO = {
-  portraitImg: "/portrait.jpg", // Lembre-se de colocar a imagem na pasta public
-  experienceYears: "10+",
-  oab: "OAB/SP 000.000",
-  description: "Com mais de uma década de atuação, a Dra. Kataliny Bonfim construiu uma trajetória pautada pela excelência técnica e pelo cuidado genuíno com cada cliente. Sua atuação combina profundidade jurídica e visão estratégica, sempre com o compromisso de transformar casos complexos em soluções claras.",
-  mission: '"Entregar soluções jurídicas com inteligência, ética e empatia — protegendo direitos e construindo confiança que transcende o processo."',
-};
-
-export const ABOUT_VALUES = [
-  "Compromisso com a verdade", 
-  "Atendimento humano e dedicado", 
-  "Estratégia jurídica preventiva", 
-  "Sigilo e confidencialidade"
-];
-
 export const PRACTICE_AREAS = [
-  { title: "Direito de Família", desc: "Divórcio, pensão alimentícia, guarda e inventários com sensibilidade e foco na resolução de conflitos.", icon: "HeartHandshake" },
-  { title: "Direito Civil", desc: "Contratos, indenizações, responsabilidade civil e disputas patrimoniais com rigor técnico.", icon: "Scale" },
-  { title: "Direito Empresarial", desc: "Assessoria consultiva e contenciosa para empresas, blindagem patrimonial e contratos comerciais.", icon: "Briefcase" },
-  { title: "Direito do Consumidor", desc: "Defesa contra práticas abusivas, renegociação de dívidas e proteção de garantias.", icon: "ShoppingBag" },
-  { title: "Direito Imobiliário", desc: "Regularização de imóveis, usucapião, análise de contratos de compra, venda e locação.", icon: "Building2" },
-  { title: "Direito Previdenciário", desc: "Aposentadorias, pensões, benefícios por incapacidade e planejamento previdenciário.", icon: "Landmark" },
+  { icon: "HeartHandshake", title: "Direito de Família", desc: "Divórcios, guarda, pensão e inventários conduzidos com sensibilidade e firmeza técnica." },
+  { icon: "Scale", title: "Direito Civil", desc: "Responsabilidade civil, obrigações, contratos e resolução de conflitos patrimoniais." },
+  { icon: "Briefcase", title: "Direito Trabalhista", desc: "Atuação estratégica para empregados e empregadores, da consultoria à litigância." },
+  { icon: "ShieldCheck", title: "Direito Penal", desc: "Defesa técnica e sigilosa em todas as instâncias, com presença e rigor." },
+  { icon: "ShoppingBag", title: "Direito do Consumidor", desc: "Reparação de danos e proteção efetiva nas relações de consumo." },
+  { icon: "Building2", title: "Direito Imobiliário", desc: "Due diligence, contratos, regularização e registro de imóveis." },
+  { icon: "Landmark", title: "Direito Empresarial", desc: "Societário, contratos comerciais e governança para empresas em crescimento." },
+  { icon: "FileSignature", title: "Contratos", desc: "Elaboração, análise e negociação de contratos com cláusulas blindadas." },
+  { icon: "ScrollText", title: "Planejamento Sucessório", desc: "Estruturas patrimoniais, holdings e testamentos com segurança jurídica." },
 ];
-
-// Adicione junto aos exports já existentes no seu constants.js
 
 export const WHY_CHOOSE = [
-  { 
-    title: "Atendimento Personalizado", 
-    desc: "Acompanhamento próximo e transparente, tratando seu caso com a dedicação que ele exige.", 
-    icon: "UserCheck" 
-  },
-  { 
-    title: "Sigilo Absoluto", 
-    desc: "Total segurança e confidencialidade em todas as informações compartilhadas.", 
-    icon: "Lock" 
-  },
-  { 
-    title: "Excelência Comprovada", 
-    desc: "Mais de uma década de resultados consistentes e clientes satisfeitos.", 
-    icon: "Award" 
-  },
-  { 
-    title: "Comunicação Clara", 
-    desc: 'Explicamos o "juridiquês" para que você entenda cada passo do seu processo.', 
-    icon: "MessageSquare" 
-  },
+  { icon: "UserCheck", title: "Orientação Personalizada", desc: "Cada cliente recebe atenção dedicada e uma estratégia construída sob medida." },
+  { icon: "Lock", title: "Sigilo Absoluto", desc: "Confidencialidade rigorosa em cada etapa, protegendo sua privacidade e seus interesses." },
+  { icon: "Award", title: "Ética Profissional", desc: "Conduta pautada pelo Código de Ética e pelo compromisso inegociável com a verdade." },
+  { icon: "MessageSquare", title: "Comunicação Clara", desc: "Linguagem acessível e atualizações constantes — você sempre sabe onde está seu caso." },
+  { icon: "Users", title: "Foco no Cliente", desc: "Sua causa é prioridade. Decisões tomadas em conjunto, com transparência total." },
+  { icon: "Target", title: "Soluções Estratégicas", desc: "Pensamento jurídico criativo e preventivo, antecipando cenários e minimizando riscos." },
 ];
 
 export const PROCESS_STEPS = [
-  { num: "01", title: "Contato Inicial", desc: "Agendamos uma reunião para entender profundamente o seu cenário e necessidades." },
-  { num: "02", title: "Análise Estratégica", desc: "Estudamos a viabilidade e desenhamos a melhor estratégia jurídica para o caso." },
-  { num: "03", title: "Ação e Execução", desc: "Iniciamos os trâmites legais, mantendo você informado de cada movimentação." },
-  { num: "04", title: "Resolução", desc: "Acompanhamento até a conclusão e entrega do melhor resultado possível." },
+  { num: "01", title: "Contato Inicial", desc: "Você nos relata, de forma reservada, a situação. Sem compromisso, sem pressa." },
+  { num: "02", title: "Avaliação do Caso", desc: "Análise técnica minuciosa dos fatos, documentos e possibilidades jurídicas." },
+  { num: "03", title: "Estratégia Jurídica", desc: "Construímos um plano de ação claro, com prazos, objetivos e cenários previstos." },
+  { num: "04", title: "Acompanhamento", desc: "Atuação contínua, com comunicação transparente até a resolução final." },
 ];
 
 export const TESTIMONIALS = [
-  { name: "Roberto Almeida", role: "Empresário", text: "A Dra. Kataliny foi essencial para a reestruturação da minha empresa. Profissionalismo e competência ímpares." },
-  { name: "Mariana Costa", role: "Cliente de Família", text: "Em um momento muito delicado da minha vida, encontrei não apenas uma advogada, mas um apoio humano e ético." },
-  { name: "Carlos Eduardo", role: "Investidor", text: "A consultoria preventiva me salvou de um péssimo negócio imobiliário. Recomendo de olhos fechados." },
+  { name: "Mariana A.", role: "Cliente — Direito de Família", text: "Encontrei na Dra. Kataliny não apenas uma advogada excepcional, mas uma profissional que compreendeu meu momento. Resultado além do esperado." },
+  { name: "Roberto L.", role: "Empresário — Direito Empresarial", text: "Solução estratégica que salvou um contrato importante para minha empresa. Profissionalismo e clareza do início ao fim." },
+  { name: "Carla M.", role: "Cliente — Direito do Consumidor", text: "Atendimento humano e técnico. Fui tratada com respeito e informada em cada etapa. Recomendo de olhos fechados." },
 ];
-
-// Adicione junto aos exports já existentes no seu constants.js
 
 export const FAQS = [
-  { 
-    q: "Como funciona a primeira consulta?", 
-    a: "A consulta inicial é o momento em que analisamos detalhadamente seu caso, avaliamos os documentos disponíveis e desenhamos as primeiras estratégias jurídicas personalizadas para a sua situação." 
-  },
-  { 
-    q: "Quais documentos preciso apresentar?", 
-    a: "Isso depende da área de atuação. Geralmente, documentos de identificação (RG/CPF), comprovante de residência e contratos/certidões ligados ao caso. Enviaremos uma lista exata antes do nosso encontro." 
-  },
-  { 
-    q: "Os atendimentos podem ser realizados de forma online?", 
-    a: "Sim! Atendemos tanto presencialmente em nosso escritório físico quanto de forma 100% online por videochamadas seguras, garantindo praticidade com a mesma excelência jurídica." 
-  },
-  { 
-    q: "Como serei informado sobre o andamento do meu processo?", 
-    a: "Mantemos nossos clientes informados de maneira constante e transparente sobre cada atualização relevante do processo, além de termos um canal direto via WhatsApp para tirar dúvidas." 
-  }
+  { q: "Como é feita a primeira consulta?", a: "A primeira conversa é reservada e sem compromisso. Você expõe sua situação e, após análise preliminar, indicamos os caminhos jurídicos possíveis e os próximos passos." },
+  { q: "Quais formas de atendimento são oferecidas?", a: "Atendemos presencialmente em nosso escritório em São Paulo e, quando conveniente, de forma online por videoconferência, garantindo agilidade e sigilo." },
+  { q: "Os honorários são definidos como?", a: "Os honorários são transparentes e definidos conforme a complexidade do caso. Tudo é pactuado em contrato antes do início dos trabalhos, sem surpresas." },
+  { q: "Minhas informações são confidenciais?", a: "Sim. O sigilo é dever ético e legal. Todas as informações compartilhadas são protegidas e utilizadas exclusivamente para a sua defesa." },
+  { q: "Em quais áreas o escritório atua?", a: "Atuamos em Direito de Família, Civil, Trabalhista, Penal, do Consumidor, Imobiliário, Empresarial, Contratos e Planejamento Sucessório." },
 ];
-
-export const FIRM_INFO = {
-  phone: "(11) 99999-9999",
-  phoneHref: "https://wa.me/5511999999999",
-  email: "contato@katalinybonfim.adv.br",
-  address: "Av. Paulista, 1000 - Bela Vista, São Paulo - SP",
-  hours: "Segunda a Sexta, das 09h às 18h",
-  mapEmbedUrl: "https://www.google.com/maps?q=Av.+Paulista+1000+São+Paulo&output=embed"
-};
-
-export const CTA_INFO = {
-  bgImage: "/cta-bg.jpg", // Lembre-se de colocar um fundo sofisticado na pasta public/
-  logoUrl: "/logo-gold.png", // Marca d'água opcional do logotipo
-};
-
-// No seu src/utils/constants.js
-export const LOGO_URL = "/logo-gold.png";
-// No seu src/utils/constants.js
-export const ABOUT_IMG = "/advogada.jpg";

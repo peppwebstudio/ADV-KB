@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Phone, Mail, MapPin, Clock, Send, CheckCircle2 } from "lucide-react";
-import { FIRM_INFO, PRACTICE_AREAS } from "../utils/constants";
+import { CLIENT_INFO, PRACTICE_AREAS } from "../utils/constants";
 
 const CONTACT_INFO = [
-  { icon: Phone, label: "Telefone", value: FIRM_INFO.phone, href: FIRM_INFO.phoneHref },
-  { icon: Mail, label: "E-mail", value: FIRM_INFO.email, href: `mailto:${FIRM_INFO.email}` },
-  { icon: MapPin, label: "Endereço", value: FIRM_INFO.address },
-  { icon: Clock, label: "Horário", value: FIRM_INFO.hours },
+  { icon: Phone, label: "Telefone", value: CLIENT_INFO.phone, href: CLIENT_INFO.phoneHref },
+  { icon: Mail, label: "E-mail", value: CLIENT_INFO.email, href: `mailto:${CLIENT_INFO.email}` },
+  { icon: MapPin, label: "Endereço", value: CLIENT_INFO.address },
+  { icon: Clock, label: "Horário", value: CLIENT_INFO.hours },
 ];
 
 // Estilo unificado para inputs do formulário
@@ -76,7 +76,7 @@ export default function Contact() {
             <div className="relative rounded-2xl overflow-hidden border border-border min-h-[220px] flex-1 bg-[hsl(350_92%_8%)]">
               <iframe
                 title="Localização do escritório"
-                src={FIRM_INFO.mapEmbedUrl}
+                src={CLIENT_INFO.mapEmbedUrl}
                 className="absolute inset-0 h-full w-full grayscale-[0.3] contrast-[1.1]"
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"

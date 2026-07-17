@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Menu, X, Shield } from "lucide-react";
-import { LOGO_URL } from "../utils/constants";
+import { CLIENT_INFO } from "../utils/constants";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -42,10 +42,9 @@ export default function Navbar() {
         <a href="#hero" className="flex items-center gap-3 group">
           {!logoError ? (
             <img
-              src={LOGO_URL}
+              src={CLIENT_INFO.logoUrl}
               alt="Logo Kataliny Bonfim"
-              className="h-9 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
-              onError={() => setLogoError(true)} // Ativa o fallback se o arquivo sumir
+              // ...
             />
           ) : (
             <Shield className="h-7 w-7 text-[hsl(40_60%_75%)]" />

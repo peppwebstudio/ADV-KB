@@ -1,19 +1,26 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Calendar, ArrowRight } from "lucide-react";
-import { CTA_INFO } from "../utils/constants";
+import { CLIENT_INFO } from "../utils/constants"; // Única fonte da verdade!
 
 export default function FinalCTA() {
   return (
     <section className="relative overflow-hidden bg-[hsl(350_92%_8%)]">
+      {/* Background Dinâmico */}
       <div className="absolute inset-0">
-        <img src={CTA_INFO.bgImage} alt="" aria-hidden="true" className="h-full w-full object-cover opacity-20" />
+        <img 
+          src={CLIENT_INFO.ctaImg} 
+          alt="Imagem de fundo da seção de contato" 
+          aria-hidden="true" 
+          className="h-full w-full object-cover opacity-20" 
+        />
         <div className="absolute inset-0 bg-gradient-to-r from-[hsl(350_92%_8%)] via-[hsl(350_80%_12%/0.85)] to-[hsl(350_92%_8%/0.7)]" />
       </div>
 
+      {/* Marca d'água Dinâmica */}
       <img
-        src={CTA_INFO.logoUrl}
-        alt=""
+        src={CLIENT_INFO.logoUrl}
+        alt="Logo marca d'água"
         aria-hidden="true"
         className="pointer-events-none absolute left-1/2 -translate-x-1/2 -bottom-1/3 h-[80%] w-auto opacity-[0.05] rounded-full"
       />
@@ -47,6 +54,7 @@ export default function FinalCTA() {
           Agende uma consulta inicial e descubra como podemos proteger seus direitos
           com estratégia, ética e dedicação.
         </motion.p>
+        
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -54,6 +62,7 @@ export default function FinalCTA() {
           transition={{ duration: 0.7, delay: 0.3 }}
           className="mt-10 flex flex-col sm:flex-row gap-4 justify-center"
         >
+          {/* Foco em Conversão: Botão âncora guiando o usuário suavemente até a seção de contato */}
           <a
             href="#contato"
             className="group inline-flex items-center justify-center gap-2.5 rounded-full bg-gold-gradient px-8 py-4 text-sm md:text-base font-semibold text-[hsl(350_90%_10%)] shadow-xl shadow-[hsl(38_55%_52%/0.3)] hover:shadow-2xl hover:scale-[1.03] transition-all"

@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { ShieldCheck, Award, Scale } from "lucide-react";
-import { ABOUT_IMG } from "../utils/constants";
+import { CLIENT_INFO } from "../utils/constants"; // Importação única e inteligente!
 
 export default function About() {
   const credentials = [
@@ -44,8 +44,8 @@ export default function About() {
             {/* Container da Imagem principal */}
             <div className="relative rounded-2xl overflow-hidden aspect-[3/4] bg-neutral-900 border border-white/10 shadow-2xl">
               <img
-                src={ABOUT_IMG}
-                alt="Dra. Kataliny Bonfim"
+                src={CLIENT_INFO.portraitImg} // <-- Correção: Usando a imagem centralizada no constants.js
+                alt={`Retrato de ${CLIENT_INFO.name}`} // <-- Correção: Nome dinâmico para SEO e Acessibilidade
                 className="h-full w-full object-cover object-top hover:scale-105 transition-transform duration-700"
                 loading="lazy"
                 onError={(e) => {
@@ -80,7 +80,7 @@ export default function About() {
 
             {/* Descrição Principal */}
             <p className="mt-6 text-white/80 text-sm md:text-base leading-relaxed">
-              Sob a liderança da Dra. Kataliny Bonfim, nosso escritório atua de forma altamente personalizada, entendendo que cada demanda exige uma estratégia única. Unimos profundo conhecimento técnico a uma visão analítica moderna para oferecer soluções seguras no âmbito preventivo e contencioso.
+              Sob a liderança de <strong className="text-white">{CLIENT_INFO.name}</strong>, nosso escritório atua de forma altamente personalizada, entendendo que cada demanda exige uma estratégia única. Unimos profundo conhecimento técnico a uma visão analítica moderna para oferecer soluções seguras no âmbito preventivo e contencioso.
             </p>
 
             <p className="mt-4 text-white/60 text-xs md:text-sm leading-relaxed">
