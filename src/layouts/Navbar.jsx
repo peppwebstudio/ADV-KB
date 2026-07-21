@@ -26,6 +26,26 @@ export default function Navbar() {
     { name: "FAQ", href: "#faq" },
   ];
 
+  // Função para lidar com o clique e fazer o scroll suave com compensação do menu fixo
+  const handleNavClick = (e, href) => {
+    e.preventDefault();
+    const targetId = href.replace("#", "");
+    const element = document.getElementById(targetId);
+    
+    if (element) {
+      const navHeight = 90; // Altura aproximada da navbar para não cobrir o conteúdo
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.scrollY - navHeight;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+      });
+    }
+    
+    setIsOpen(false); // Fecha o menu mobile se estiver aberto
+  };
+
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -37,7 +57,11 @@ export default function Navbar() {
       <div className="mx-auto max-w-7xl px-5 md:px-8 flex items-center justify-between">
         
         {/* LOGO AREA */}
-        <a href="#hero" className="flex items-center gap-3 group shrink-0">
+        <a 
+          href="#hero" 
+          onClick={(e) => handleNavClick(e, "#hero")}
+          className="flex items-center gap-3 group shrink-0"
+        >
           {!logoError ? (
             <img
               src={CLIENT_INFO.logoUrl}
@@ -64,6 +88,7 @@ export default function Navbar() {
             <a
               key={link.name}
               href={link.href}
+              onClick={(e) => handleNavClick(e, link.href)}
               className="text-white/80 hover:text-[hsl(40_60%_75%)] text-sm font-medium transition-colors duration-200"
             >
               {link.name}
@@ -100,7 +125,7 @@ export default function Navbar() {
             <a
               key={link.name}
               href={link.href}
-              onClick={() => setIsOpen(false)}
+              onClick={(e) => handleNavClick(e, link.href)}
               className="text-white/80 hover:text-[hsl(40_60%_75%)] text-base font-medium py-2 border-b border-white/5 transition-colors duration-200"
             >
               {link.name}

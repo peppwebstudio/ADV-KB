@@ -3,14 +3,13 @@ import { motion } from "framer-motion";
 import { Scale, ShieldCheck, Landmark } from "lucide-react";
 import { PRACTICE_AREAS } from "../utils/constants";
 
-// Dicionário de ícones para renderização dinâmica
 const ICONS = {
   Scale, ShieldCheck, Landmark,
 };
 
 export default function PracticeAreas() {
   return (
-    <section id="areas" className="py-20 md:py-28 bg-[hsl(350_92%_8%)] relative overflow-hidden">
+    <section id="practice-areas" className="py-20 md:py-28 bg-[hsl(350_92%_8%)] relative overflow-hidden">
       <div className="absolute top-1/4 -left-32 h-96 w-96 rounded-full bg-[hsl(38_55%_52%)] opacity-10 blur-3xl" />
 
       <div className="relative mx-auto max-w-7xl px-5 md:px-8">
@@ -31,7 +30,7 @@ export default function PracticeAreas() {
 
         <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {PRACTICE_AREAS.map((area, i) => {
-            const Icon = ICONS[area.icon] || Scale; // Fallback para Scale se o ícone não for encontrado
+            const Icon = ICONS[area.icon] || Scale;
             return (
               <motion.div
                 key={area.title}
@@ -51,7 +50,6 @@ export default function PracticeAreas() {
                   <h3 className="mt-5 font-heading text-xl font-semibold text-white">{area.title}</h3>
                   <p className="mt-3 text-sm text-white/60 leading-relaxed flex-grow">{area.desc}</p>
                   
-                  {/* Renderização Condicional das Especialidades (Tags) */}
                   {area.specialties && area.specialties.length > 0 && (
                     <div className="mt-6 flex flex-wrap gap-2">
                       {area.specialties.map((specialty, idx) => (

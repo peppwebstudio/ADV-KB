@@ -4,7 +4,7 @@ import { CLIENT_INFO } from "../utils/constants";
 
 export default function Hero() {
   return (
-    <section id="top" className="relative min-h-screen flex items-center overflow-hidden bg-burgundy-gradient">
+    <section id="hero" className="relative min-h-screen flex items-center overflow-hidden bg-burgundy-gradient">
       {/* Background image */}
       <div className="absolute inset-0">
         <motion.img

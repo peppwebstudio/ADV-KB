@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { ShieldCheck, Award, Scale } from "lucide-react";
-import { CLIENT_INFO } from "../utils/constants"; // Importação única e inteligente!
+import { CLIENT_INFO } from "../utils/constants";
 
 export default function About() {
   const credentials = [
@@ -44,12 +44,11 @@ export default function About() {
             {/* Container da Imagem principal */}
             <div className="relative rounded-2xl overflow-hidden aspect-[3/4] bg-neutral-900 border border-white/10 shadow-2xl">
               <img
-                src={CLIENT_INFO.portraitImg} // <-- Correção: Usando a imagem centralizada no constants.js
-                alt={`Retrato de ${CLIENT_INFO.name}`} // <-- Correção: Nome dinâmico para SEO e Acessibilidade
+                src={CLIENT_INFO.portraitImg}
+                alt={`Retrato de ${CLIENT_INFO.name}`}
                 className="h-full w-full object-cover object-top hover:scale-105 transition-transform duration-700"
                 loading="lazy"
                 onError={(e) => {
-                  // Fallback visual caso a foto não seja encontrada localmente
                   e.target.src = "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=800";
                 }}
               />
