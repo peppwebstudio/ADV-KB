@@ -11,6 +11,7 @@ import FAQ from "./sections/FAQ";
 import Contact from "./sections/Contact";
 import FinalCTA from "./sections/FinalCTA";
 import Footer from "./layouts/Footer";
+import { WhatsAppButton } from "./components/ui/WhatsAppButton";
 
 function App() {
   return (
@@ -37,6 +38,8 @@ function App() {
       {/* Rodapé institucional */}
       <Footer />
       
+      {/* Botão flutuante do WhatsApp */}
+      <WhatsAppButton />
     </div>
   );
 }

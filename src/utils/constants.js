@@ -32,15 +32,22 @@ export const HERO_STATS = [
 ];
 
 export const PRACTICE_AREAS = [
-  { icon: "HeartHandshake", title: "Direito de Família", desc: "Divórcios, guarda, pensão e inventários conduzidos com sensibilidade e firmeza técnica." },
-  { icon: "Scale", title: "Direito Civil", desc: "Responsabilidade civil, obrigações, contratos e resolução de conflitos patrimoniais." },
-  { icon: "Briefcase", title: "Direito Trabalhista", desc: "Atuação estratégica para empregados e empregadores, da consultoria à litigância." },
-  { icon: "ShieldCheck", title: "Direito Penal", desc: "Defesa técnica e sigilosa em todas as instâncias, com presença e rigor." },
-  { icon: "ShoppingBag", title: "Direito do Consumidor", desc: "Reparação de danos e proteção efetiva nas relações de consumo." },
-  { icon: "Building2", title: "Direito Imobiliário", desc: "Due diligence, contratos, regularização e registro de imóveis." },
-  { icon: "Landmark", title: "Direito Empresarial", desc: "Societário, contratos comerciais e governança para empresas em crescimento." },
-  { icon: "FileSignature", title: "Contratos", desc: "Elaboração, análise e negociação de contratos com cláusulas blindadas." },
-  { icon: "ScrollText", title: "Planejamento Sucessório", desc: "Estruturas patrimoniais, holdings e testamentos com segurança jurídica." },
+  { 
+    icon: "Scale", 
+    title: "Direito Civil", 
+    desc: "Responsabilidade civil, obrigações, contratos e resolução de conflitos patrimoniais.",
+    specialties: ["Divórcio", "Pensão"]
+  },
+  { 
+    icon: "ShieldCheck", 
+    title: "Direito Penal", 
+    desc: "Defesa técnica e sigilosa em todas as instâncias, com presença e rigor." 
+  },
+  { 
+    icon: "Landmark", 
+    title: "Direito Previdenciário", 
+    desc: "Aposentadorias, pensões, auxílios e planejamento previdenciário com foco na garantia dos seus direitos." 
+  },
 ];
 
 export const WHY_CHOOSE = [
