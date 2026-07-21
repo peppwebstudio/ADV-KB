@@ -1,11 +1,11 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { HeartHandshake, Scale, Briefcase, ShieldCheck, ShoppingBag, Building2, Landmark, FileSignature, ScrollText } from "lucide-react";
+import { Scale, ShieldCheck, Landmark } from "lucide-react";
 import { PRACTICE_AREAS } from "../utils/constants";
 
 // Dicionário de ícones para renderização dinâmica
 const ICONS = {
-  HeartHandshake, Scale, Briefcase, ShieldCheck, ShoppingBag, Building2, Landmark, FileSignature, ScrollText,
+  Scale, ShieldCheck, Landmark,
 };
 
 export default function PracticeAreas() {
@@ -39,16 +39,31 @@ export default function PracticeAreas() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.5, delay: (i % 3) * 0.08 }}
-                className="group relative rounded-2xl bg-white/[0.03] border border-[hsl(38_55%_58%/0.18)] p-7 transition-all duration-300 hover:border-[hsl(38_55%_58%/0.6)] hover:bg-white/[0.06] hover:-translate-y-1 focus-within:ring-2 focus-within:ring-[hsl(38_55%_58%)] focus-within:ring-offset-2 focus-within:ring-offset-[hsl(350_92%_8%)]"
+                className="group relative flex flex-col rounded-2xl bg-white/[0.03] border border-[hsl(38_55%_58%/0.18)] p-7 transition-all duration-300 hover:border-[hsl(38_55%_58%/0.6)] hover:bg-white/[0.06] hover:-translate-y-1 focus-within:ring-2 focus-within:ring-[hsl(38_55%_58%)] focus-within:ring-offset-2 focus-within:ring-offset-[hsl(350_92%_8%)]"
                 tabIndex={0}
               >
                 <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-[hsl(38_55%_52%/0.12)] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <div className="relative">
+                
+                <div className="relative flex flex-col flex-grow">
                   <div className="inline-flex items-center justify-center h-14 w-14 rounded-xl bg-gold-gradient shadow-lg shadow-[hsl(38_55%_52%/0.2)]">
                     <Icon className="h-7 w-7 text-[hsl(350_90%_10%)]" />
                   </div>
                   <h3 className="mt-5 font-heading text-xl font-semibold text-white">{area.title}</h3>
-                  <p className="mt-3 text-sm text-white/60 leading-relaxed">{area.desc}</p>
+                  <p className="mt-3 text-sm text-white/60 leading-relaxed flex-grow">{area.desc}</p>
+                  
+                  {/* Renderização Condicional das Especialidades (Tags) */}
+                  {area.specialties && area.specialties.length > 0 && (
+                    <div className="mt-6 flex flex-wrap gap-2">
+                      {area.specialties.map((specialty, idx) => (
+                        <span 
+                          key={idx} 
+                          className="inline-flex items-center rounded-full border border-[hsl(38_55%_58%/0.3)] bg-[hsl(38_55%_58%/0.08)] px-3 py-1 text-xs font-medium tracking-wide text-[hsl(40_60%_75%)]"
+                        >
+                          {specialty}
+                        </span>
+                      ))}
+                    </div>
+                  )}
                 </div>
               </motion.div>
             );
