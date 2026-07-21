@@ -1,14 +1,14 @@
 import React, { useState, useRef } from "react";
 import { motion } from "framer-motion";
-import { Phone, Mail, MapPin, Clock, Send, CheckCircle2 } from "lucide-react";
+import { Phone, Mail, MapPin, Send, CheckCircle2 } from "lucide-react";
 import emailjs from '@emailjs/browser';
 import { CLIENT_INFO, PRACTICE_AREAS } from "../utils/constants";
 
+// Removido o Horário (Clock)
 const CONTACT_INFO = [
   { icon: Phone, label: "Telefone", value: CLIENT_INFO.phone, href: CLIENT_INFO.phoneHref },
   { icon: Mail, label: "E-mail", value: CLIENT_INFO.email, href: `mailto:${CLIENT_INFO.email}` },
   { icon: MapPin, label: "Endereço", value: CLIENT_INFO.address },
-  { icon: Clock, label: "Horário", value: CLIENT_INFO.hours },
 ];
 
 const inputClasses = "w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder-white/40 focus:border-[hsl(38_55%_58%)] focus:bg-white/10 focus:outline-none focus:ring-1 focus:ring-[hsl(38_55%_58%)] transition-all [&>option]:bg-[hsl(350_92%_5%)] [&>option]:text-white";
@@ -24,7 +24,6 @@ export default function Contact() {
     setLoading(true);
     setError(false);
 
-    // Conectando com as variáveis de ambiente (Padrão de Agência)
     emailjs
       .sendForm(
         import.meta.env.VITE_EMAILJS_SERVICE_ID,
@@ -37,7 +36,7 @@ export default function Contact() {
           console.log("Sucesso:", result.text);
           setLoading(false);
           setSent(true);
-          form.current.reset(); // Limpa os campos magicamente
+          form.current.reset();
         },
         (error) => {
           console.error("Erro no envio:", error.text);
@@ -74,32 +73,35 @@ export default function Contact() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="flex flex-col gap-4"
+            className="flex flex-col gap-6"
           >
-            <div className="grid sm:grid-cols-2 gap-4">
+            {/* Cards Verticais */}
+            <div className="flex flex-col gap-4">
               {CONTACT_INFO.map((c) => {
                 const Icon = c.icon;
                 const content = (
-                  <div className="group rounded-2xl bg-white/5 border border-white/10 p-5 hover:border-[hsl(38_55%_58%)]/40 hover:bg-white/10 hover:shadow-lg transition-all h-full">
-                    <div className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-[hsl(38_55%_58%)]/10 group-hover:bg-[hsl(38_55%_58%)]/20 transition-colors">
-                      <Icon className="h-5 w-5 text-[hsl(38_55%_58%)]" />
+                  <div className="group flex items-center gap-5 rounded-2xl bg-white/5 border border-white/10 p-5 hover:border-[hsl(38_55%_58%)]/40 hover:bg-white/10 hover:shadow-lg transition-all w-full">
+                    <div className="shrink-0 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-[hsl(38_55%_58%)]/10 group-hover:bg-[hsl(38_55%_58%)]/20 transition-colors">
+                      <Icon className="h-6 w-6 text-[hsl(38_55%_58%)]" />
                     </div>
-                    <p className="mt-3 text-xs tracking-luxe uppercase text-white/60">{c.label}</p>
-                    <p className="mt-1 text-sm font-medium text-white leading-snug">{c.value}</p>
+                    <div className="flex flex-col">
+                      <p className="text-xs tracking-luxe uppercase text-white/60 mb-1">{c.label}</p>
+                      <p className="text-sm md:text-base font-medium text-white leading-snug">{c.value}</p>
+                    </div>
                   </div>
                 );
                 return c.href ? (
-                  <a key={c.label} href={c.href} target="_blank" rel="noopener noreferrer" className="block h-full">
+                  <a key={c.label} href={c.href} target="_blank" rel="noopener noreferrer" className="block w-full">
                     {content}
                   </a>
                 ) : (
-                  <div key={c.label} className="h-full">{content}</div>
+                  <div key={c.label} className="w-full">{content}</div>
                 );
               })}
             </div>
 
             {/* Map */}
-            <div className="relative rounded-2xl overflow-hidden border border-white/10 min-h-[220px] flex-1 bg-[hsl(350_92%_8%)] mt-2">
+            <div className="relative rounded-2xl overflow-hidden border border-white/10 min-h-[250px] flex-1 bg-[hsl(350_92%_8%)]">
               <iframe
                 title="Localização do escritório"
                 src={CLIENT_INFO.mapEmbedUrl}
@@ -116,7 +118,7 @@ export default function Contact() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="rounded-3xl bg-white/5 backdrop-blur-md border border-[hsl(38_55%_58%)]/30 shadow-2xl p-6 md:p-9"
+            className="rounded-3xl bg-white/5 backdrop-blur-md border border-[hsl(38_55%_58%)]/30 shadow-2xl p-6 md:p-9 h-fit"
           >
             {sent ? (
               <div className="h-full flex flex-col items-center justify-center text-center py-16">
@@ -147,7 +149,7 @@ export default function Contact() {
 
                 <div className="grid sm:grid-cols-2 gap-5">
                   <Field label="Telefone" required>
-                    <input type="tel" name="user_phone" required className={inputClasses} placeholder="(11) 90000-0000" />
+                    <input type="tel" name="user_phone" required className={inputClasses} placeholder="(81) 98415-3219" />
                   </Field>
                   <Field label="Forma de Contato Preferida" required>
                     <select name="contact_pref" required className={inputClasses} defaultValue="">

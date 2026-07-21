@@ -6,16 +6,14 @@
 export const CLIENT_INFO = {
   name: "Kataliny Bonfim",
   tagline: "Advocacia e Consultoria Jurídica",
-  phone: "+55 (11) 4000-0000",
-  phoneHref: "tel:+551140000000",
-  email: "contato@katalinybonfim.com.br",
-  address: "Av. Paulista, 1000 — Bela Vista, São Paulo — SP, 01310-100",
-  mapEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.106696296001!2d-46.65496112369251!3d-23.564611161688665!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59c8da0aa315%3A0xd59f9431f2c9776a!2sAv.%20Paulista%2C%201000%20-%20Bela%20Vista%2C%20S%C3%A3o%20Paulo%20-%20SP%2C%2001310-100!5e0!3m2!1spt-BR!2sbr!4v1715000000000!5m2!1spt-BR!2sbr",
-  hours: "Seg. a Sex. — 09h às 18h",
+  phone: "+55 (81) 98415-3219",
+  phoneHref: "tel:+5581984153219",
+  email: "adv.katalinybonfim@gmail.com",
+  address: "R. do Imperador Pedro II, 346 - Santo Antônio, Recife - PE, 50010-240",
+  // URL de embed válida para iframes baseada no novo endereço
+  mapEmbedUrl: "https://maps.google.com/maps?q=R.+do+Imperador+Pedro+II,+346+-+Santo+Ant%C3%B4nio,+Recife+-+PE,+50010-240&t=&z=16&ie=UTF8&iwloc=&output=embed",
   social: {
-    instagram: "#",
-    linkedin: "#",
-    facebook: "#",
+    instagram: "https://www.instagram.com/katalinybonfimadv/",
   },
   
   // Imagens Locais (Pasta public/) - Prontas para Vercel

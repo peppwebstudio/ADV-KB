@@ -12,6 +12,7 @@ import Contact from "./sections/Contact";
 import FinalCTA from "./sections/FinalCTA";
 import Footer from "./layouts/Footer";
 import { WhatsAppButton } from "./components/ui/WhatsAppButton";
+import { InstagramButton } from "./components/ui/InstagramButton";
 
 function App() {
   return (
@@ -38,7 +39,8 @@ function App() {
       {/* Rodapé institucional */}
       <Footer />
       
-      {/* Botão flutuante do WhatsApp */}
+      {/* Botões flutuantes (Social) */}
+      <InstagramButton />
       <WhatsAppButton />
     </div>
   );

@@ -1,8 +1,8 @@
 import { motion } from 'framer-motion';
 
 export function WhatsAppButton() {
-  // Substitua pelo número real da advogada, incluindo DDI e DDD (ex: 5511999999999)
-  const phoneNumber = "5500000000000"; 
+  // Substitua pelo número real da advogada, incluindo DDI e DDD (ex: 5581984153219)
+  const phoneNumber = "5581984153219"; 
   const message = "Olá! Encontrei seu site e tenho interesse em conhecer melhor seus serviços jurídicos. Poderia me passar mais informações?";
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 
