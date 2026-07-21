@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Calendar, Phone, ArrowRight } from "lucide-react";
-import { CLIENT_INFO, HERO_STATS } from "../utils/constants";
+import { CLIENT_INFO } from "../utils/constants";
 
 export default function Hero() {
   return (
@@ -36,7 +36,7 @@ export default function Hero() {
             className="flex items-center gap-3 text-xs md:text-sm tracking-luxe uppercase text-[hsl(40_60%_75%)] font-medium"
           >
             <span className="h-px w-10 bg-[hsl(38_55%_58%)]" />
-            Excelência Jurídica Desde 2014
+            Excelência Jurídica
           </motion.p>
 
           <motion.h1
@@ -81,20 +81,6 @@ export default function Hero() {
               <Phone className="h-5 w-5" />
               Fale Conosco
             </a>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 0.7 }}
-            className="mt-16 flex flex-wrap items-center gap-x-10 gap-y-4 text-white/60"
-          >
-            {HERO_STATS.map((s) => (
-              <div key={s.l} className="flex items-center gap-3">
-                <span className="font-heading text-2xl font-semibold text-gradient-gold">{s.n}</span>
-                <span className="text-xs uppercase tracking-wider">{s.l}</span>
-              </div>
-            ))}
           </motion.div>
         </div>
       </div>

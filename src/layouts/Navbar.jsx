@@ -7,7 +7,6 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [logoError, setLogoError] = useState(false);
 
-  // Controla o efeito de vidro/sombra ao rolar a página
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 20) {
@@ -23,8 +22,7 @@ export default function Navbar() {
   const navLinks = [
     { name: "Início", href: "#hero" },
     { name: "Sobre", href: "#sobre" },
-    { name: "Serviços", href: "#servicos" },
-    { name: "Depoimentos", href: "#depoimentos" },
+    { name: "Serviços", href: "#practice-areas" },
     { name: "FAQ", href: "#faq" },
   ];
 
@@ -38,15 +36,14 @@ export default function Navbar() {
     >
       <div className="mx-auto max-w-7xl px-5 md:px-8 flex items-center justify-between">
         
-        {/* LOGO AREA - Agora com CSS Defensivo */}
+        {/* LOGO AREA */}
         <a href="#hero" className="flex items-center gap-3 group shrink-0">
           {!logoError ? (
             <img
               src={CLIENT_INFO.logoUrl}
               alt={`Logo ${CLIENT_INFO.name}`}
-              // AS CLASSES ABAIXO SALVAM O LAYOUT: limitam a altura e mantêm a proporção
               className="h-10 md:h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
-              onError={() => setLogoError(true)} // Se a imagem falhar, mostra o ícone
+              onError={() => setLogoError(true)}
             />
           ) : (
             <Shield className="h-8 w-8 text-[hsl(40_60%_75%)]" />

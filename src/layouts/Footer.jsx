@@ -1,9 +1,8 @@
 import React from "react";
 import { Shield } from "lucide-react";
-import { Facebook, Instagram, Linkedin } from "../components/BrandIcons"; 
-import { CLIENT_INFO } from "../utils/constants"; // Padrão PWS: Importação única e inteligente
+import { Facebook, Instagram, Linkedin } from "../components/ui/BrandIcons"; 
+import { CLIENT_INFO } from "../utils/constants";
 
-// Mapeador de componentes locais para manter as constantes dinâmicas
 const iconMap = {
   facebook: Facebook,
   instagram: Instagram,
@@ -12,15 +11,13 @@ const iconMap = {
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
-
-  // Transforma o objeto { instagram: "#", linkedin: "#" } em um formato mapeável para o React
   const socialLinks = Object.entries(CLIENT_INFO.social);
 
   return (
     <footer className="bg-[hsl(350_92%_5%)] border-t border-white/10 pt-16 pb-8 text-white/60 text-sm">
       <div className="mx-auto max-w-7xl px-5 md:px-8 grid md:grid-cols-3 gap-10 md:gap-6 pb-12 border-b border-white/10">
         
-        {/* Lado Esquerdo: Marca (Totalmente Dinâmico) */}
+        {/* Lado Esquerdo: Marca */}
         <div>
           <span className="font-heading text-xl font-bold tracking-luxe text-white uppercase">
             {CLIENT_INFO.name}
@@ -53,7 +50,6 @@ export default function Footer() {
           <div className="flex gap-4">
             {socialLinks.map(([platform, href]) => {
               const IconComponent = iconMap[platform];
-              // Se não tivermos o ícone mapeado ou o link estiver vazio, ignoramos
               if (!IconComponent || !href) return null;
               
               return (
