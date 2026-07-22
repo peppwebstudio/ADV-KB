@@ -33,17 +33,20 @@ export const PRACTICE_AREAS = [
   { 
     icon: "Scale", 
     title: "Direito Civil", 
-    desc: "Responsabilidade civil, obrigações, contratos e resolução de conflitos patrimoniais.",
+    desc: "Responsabilidade civil, obrigações, contratos. resolução de conflitos patrimoniais e muito mais.",
+    services: ["Obrigações", "Contratos", "Responsabilidade Civil", "Direitos Reais", "Direito de Família", "Sucessões" ,"Divórcio", "Pensão Alimentícia", "Guarda de Filhos", "Inventário", "Indenizações", "Direito de Família"]
   },
   { 
     icon: "ShieldCheck", 
     title: "Direito Penal", 
-    desc: "Defesa técnica e sigilosa em todas as instâncias, com presença e rigor." 
+    desc: "Defesa técnica e sigilosa em todas as instâncias, com presença e rigor.",
+    services: ["Acompanhamento em Delegacia", "Defesa Criminal", "Habeas Corpus", "Tribunal do Júri"]
   },
   { 
     icon: "Landmark", 
     title: "Direito Previdenciário", 
-    desc: "Aposentadorias, pensões, auxílios e planejamento previdenciário com foco na garantia dos seus direitos." 
+    desc: "Aposentadorias, pensões, auxílios e planejamento previdenciário com foco na garantia dos seus direitos.",
+    services: ["Aposentadoria por Idade", "Aposentadoria por Invalidez", "Auxílio-Doença", "Pensão por Morte", "BPC / LOAS", "Revisão de Aposentadoria", "Revisão de Benefícios", "Planejamento Previdenciário"]
   },
 ];
 
