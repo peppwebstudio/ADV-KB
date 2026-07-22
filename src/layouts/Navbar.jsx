@@ -26,14 +26,13 @@ export default function Navbar() {
     { name: "FAQ", href: "#faq" },
   ];
 
-  // Função para lidar com o clique e fazer o scroll suave com compensação do menu fixo
   const handleNavClick = (e, href) => {
     e.preventDefault();
     const targetId = href.replace("#", "");
     const element = document.getElementById(targetId);
     
     if (element) {
-      const navHeight = 90; // Altura aproximada da navbar para não cobrir o conteúdo
+      const navHeight = 90; 
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.scrollY - navHeight;
 
@@ -43,20 +42,19 @@ export default function Navbar() {
       });
     }
     
-    setIsOpen(false); // Fecha o menu mobile se estiver aberto
+    setIsOpen(false);
   };
 
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-[hsl(350_92%_5%)]/95 backdrop-blur-md border-b border-white/5 py-4 shadow-lg shadow-black/20"
+          ? "bg-[#2D0408]/95 backdrop-blur-md border-b border-white/5 py-4 shadow-lg shadow-black/20"
           : "bg-transparent py-6"
       }`}
     >
       <div className="mx-auto max-w-7xl px-5 md:px-8 flex items-center justify-between">
         
-        {/* LOGO AREA */}
         <a 
           href="#hero" 
           onClick={(e) => handleNavClick(e, "#hero")}
@@ -66,13 +64,13 @@ export default function Navbar() {
             <img
               src={CLIENT_INFO.logoUrl}
               alt={`Logo ${CLIENT_INFO.name}`}
-              className="h-10 md:h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+              className="h-10 md:h-12 w-auto object-contain transition-transform duration-300 origin-bottom-right scale-[1.3] group-hover:scale-[1.4]"
               onError={() => setLogoError(true)}
             />
           ) : (
             <Shield className="h-8 w-8 text-[hsl(40_60%_75%)]" />
           )}
-          <div className="flex flex-col">
+          <div className="flex flex-col z-10 relative">
             <span className="font-heading text-sm md:text-base font-bold tracking-[0.2em] text-white uppercase leading-none">
               {CLIENT_INFO.name}
             </span>
@@ -82,7 +80,6 @@ export default function Navbar() {
           </div>
         </a>
 
-        {/* DESKTOP LINKS */}
         <div className="hidden lg:flex items-center gap-8">
           {navLinks.map((link) => (
             <a
@@ -96,19 +93,17 @@ export default function Navbar() {
           ))}
         </div>
 
-        {/* DESKTOP CTA BUTTON */}
         <div className="hidden lg:block shrink-0">
           <a
             href={CLIENT_INFO.phoneHref}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center px-6 py-2.5 rounded-full text-xs uppercase tracking-widest font-bold bg-gold-gradient text-[hsl(350_92%_5%)] shadow-lg hover:brightness-110 hover:scale-[1.02] active:scale-95 transition-all duration-200"
+            className="inline-flex items-center justify-center px-6 py-2.5 rounded-full text-xs uppercase tracking-widest font-bold bg-gold-gradient text-[#2D0408] shadow-lg hover:brightness-110 hover:scale-[1.02] active:scale-95 transition-all duration-200"
           >
             Agendar Consulta
           </a>
         </div>
 
-        {/* MOBILE MENU TOGGLE */}
         <button
           onClick={() => setIsOpen(!isOpen)}
           className="lg:hidden p-2 text-white/85 hover:text-white transition-colors focus:outline-none ml-auto"
@@ -118,9 +113,8 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* MOBILE MENU PANEL */}
       {isOpen && (
-        <div className="lg:hidden absolute top-full left-0 right-0 bg-[hsl(350_92%_5%)] border-b border-white/10 py-6 px-5 flex flex-col gap-5 shadow-2xl">
+        <div className="lg:hidden absolute top-full left-0 right-0 bg-[#2D0408] border-b border-white/10 py-6 px-5 flex flex-col gap-5 shadow-2xl">
           {navLinks.map((link) => (
             <a
               key={link.name}
@@ -135,7 +129,7 @@ export default function Navbar() {
             href={CLIENT_INFO.phoneHref}
             target="_blank"
             rel="noopener noreferrer"
-            className="w-full mt-2 text-center py-4 rounded-full text-sm uppercase tracking-widest font-bold bg-gold-gradient text-[hsl(350_92%_5%)] shadow-md transition-transform active:scale-[0.98]"
+            className="w-full mt-2 text-center py-4 rounded-full text-sm uppercase tracking-widest font-bold bg-gold-gradient text-[#2D0408] shadow-md transition-transform active:scale-[0.98]"
           >
             Agendar Consulta
           </a>

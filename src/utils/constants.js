@@ -19,7 +19,7 @@ export const CLIENT_INFO = {
   // Imagens Locais (Pasta public/) - Prontas para Vercel
   logoUrl: "/logo-gold.png",
   heroImg: "/biblioteca.png",
-  portraitImg: "/advogada.png",
+  portraitImg: "/fotodefinitiva.png",
   ctaImg: "/parede.png",
 };
 
@@ -34,7 +34,6 @@ export const PRACTICE_AREAS = [
     icon: "Scale", 
     title: "Direito Civil", 
     desc: "Responsabilidade civil, obrigações, contratos e resolução de conflitos patrimoniais.",
-    specialties: ["Divórcio", "Pensão"]
   },
   { 
     icon: "ShieldCheck", 
@@ -55,19 +54,6 @@ export const WHY_CHOOSE = [
   { icon: "MessageSquare", title: "Comunicação Clara", desc: "Linguagem acessível e atualizações constantes — você sempre sabe onde está seu caso." },
   { icon: "Users", title: "Foco no Cliente", desc: "Sua causa é prioridade. Decisões tomadas em conjunto, com transparência total." },
   { icon: "Target", title: "Soluções Estratégicas", desc: "Pensamento jurídico criativo e preventivo, antecipando cenários e minimizando riscos." },
-];
-
-export const PROCESS_STEPS = [
-  { num: "01", title: "Contato Inicial", desc: "Você nos relata, de forma reservada, a situação. Sem compromisso, sem pressa." },
-  { num: "02", title: "Avaliação do Caso", desc: "Análise técnica minuciosa dos fatos, documentos e possibilidades jurídicas." },
-  { num: "03", title: "Estratégia Jurídica", desc: "Construímos um plano de ação claro, com prazos, objetivos e cenários previstos." },
-  { num: "04", title: "Acompanhamento", desc: "Atuação contínua, com comunicação transparente até a resolução final." },
-];
-
-export const TESTIMONIALS = [
-  { name: "Mariana A.", role: "Cliente — Direito de Família", text: "Encontrei na Dra. Kataliny não apenas uma advogada excepcional, mas uma profissional que compreendeu meu momento. Resultado além do esperado." },
-  { name: "Roberto L.", role: "Empresário — Direito Empresarial", text: "Solução estratégica que salvou um contrato importante para minha empresa. Profissionalismo e clareza do início ao fim." },
-  { name: "Carla M.", role: "Cliente — Direito do Consumidor", text: "Atendimento humano e técnico. Fui tratada com respeito e informada em cada etapa. Recomendo de olhos fechados." },
 ];
 
 export const FAQS = [
